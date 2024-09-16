@@ -1,0 +1,88 @@
+[
+  {
+    "id": 1,
+    "name": "Anillo de Oro Blanco",
+    "price": 5000,
+    "stock": 10,
+    "description": "Anillo de oro blanco de 18 quilates con un elegante diseño minimalista.",
+    "category": "Anillos",
+    "code": "AN01",
+    "status": true,
+    "thumbnail": "https://example.com/images/anillo-oro-blanco.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Collar de Perlas",
+    "price": 7500,
+    "stock": 5,
+    "description": "Hermoso collar de perlas naturales de alta calidad, ideal para ocasiones especiales.",
+    "category": "Collares",
+    "code": "CO02",
+    "status": true,
+    "thumbnail": "https://example.com/images/collar-perlas.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Pulsera de Plata",
+    "price": 2500,
+    "stock": 20,
+    "description": "Pulsera de plata 925 con detalles de filigrana, perfecta para el uso diario.",
+    "category": "Pulseras",
+    "code": "PU03",
+    "status": true,
+    "thumbnail": "https://example.com/images/pulsera-plata.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Reloj de Oro Rosa",
+    "price": 15000,
+    "stock": 3,
+    "description": "Reloj de oro rosa con diseño moderno y elegante, con correa de cuero genuino.",
+    "category": "Relojes",
+    "code": "RE04",
+    "status": true,
+    "thumbnail": "https://example.com/images/reloj-oro-rosa.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Aretes de Diamantes",
+    "price": 8500,
+    "stock": 8,
+    "description": "Aretes de diamantes engastados en oro blanco de 14 quilates, ideales para eventos formales.",
+    "category": "Aretes",
+    "code": "AR05",
+    "status": true,
+    "thumbnail": "https://example.com/images/aretes-diamantes.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Anillo de Compromiso con Zafiro",
+    "price": 12000,
+    "stock": 4,
+    "description": "Anillo de compromiso con un zafiro azul rodeado de pequeños diamantes, en oro amarillo.",
+    "category": "Anillos",
+    "code": "AN06",
+    "status": true,
+    "thumbnail": "https://example.com/images/anillo-compromiso-zafiro.jpg"
+  },
+  {
+    "id": 7,
+    "name": "josefina",
+    "description": "24234",
+    "price": "2342",
+    "category": "23423",
+    "status": true,
+    "code": "234234",
+    "stock": "214"
+  },
+  {
+    "id": 8,
+    "name": "Pulsera de Cuero y Acero",
+    "description": "Pulsera de cuero negro con detalles en acero inoxidable, perfecta para un look casual y moderno.",
+    "price": "1800",
+    "category": "Pulsera",
+    "status": true,
+    "code": "PU08",
+    "stock": "15"
+  }
+]
