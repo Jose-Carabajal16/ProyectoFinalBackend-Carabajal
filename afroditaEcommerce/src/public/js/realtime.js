@@ -60,10 +60,10 @@ form.addEventListener("submit", (evt) => {
     form.reset();
 });
 
-// Para eliminar por ID
+// eliminar por ID
 document.getElementById("delete-btn").addEventListener("click", function () {
     const deleteidinput = document.getElementById("id-prod");
-    const deleteid = deleteidinput.value.trim(); // Asegúrate de que no haya espacios en blanco
+    const deleteid = deleteidinput.value.trim(); 
     if (deleteid) {
         socket.emit("deleteProduct", deleteid);
         deleteidinput.value = "";
@@ -72,7 +72,7 @@ document.getElementById("delete-btn").addEventListener("click", function () {
     }
 });
 
-// Para eliminar el producto directamente
+// eliminar el producto directamente
 function deleteProduct(productId) {
-    socket.emit("deleteProduct", String(productId)); // Asegúrate de que el ID esté en formato de cadena
+    socket.emit("deleteProduct", String(productId)); 
 }
