@@ -3,10 +3,10 @@
 
     <!-- Nombre del Producto -->
     <div class="col-md-6">
-        <label for="name" class="form-label">Nombre del Producto</label>
+        <label for="title" class="form-label">Nombre del Producto</label>
         <div class="input-group">
             <span class="input-group-text"><i class="bi bi-box"></i></span>
-            <input class="form-control" type="text" name="name" id="name" placeholder="Ej. Anillo de oro" required>
+            <input class="form-control" type="text" name="title" id="title" placeholder="Ej. Anillo de oro" required>
         </div>
     </div>
 
@@ -15,7 +15,7 @@
         <label for="description" class="form-label">Descripción</label>
         <div class="input-group">
             <span class="input-group-text"><i class="bi bi-file-text"></i></span>
-            <input class="form-control" type="text" name="description" id="description" placeholder="Ej. Anillo de bañado en oro con perlas preciosas" required>
+            <input class="form-control" type="text" name="description" id="description" placeholder="Ej. Último modelo con características de oro" required>
         </div>
     </div>
 
@@ -28,12 +28,21 @@
         </div>
     </div>
 
+    <!-- Imagen (URL) -->
+    <div class="col-md-6">
+        <label for="thumbnail" class="form-label">Imagen (URL)</label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-image"></i></span>
+            <input class="form-control" type="text" name="thumbnail" id="thumbnail" placeholder="Ej. https://example.com/image.jpg" required>
+        </div>
+    </div>
+
     <!-- Categoría -->
     <div class="col-md-6">
         <label for="category" class="form-label">Categoría</label>
         <div class="input-group">
             <span class="input-group-text"><i class="bi bi-grid"></i></span>
-            <input class="form-control" type="text" name="category" id="category" placeholder="Ej. Anillos" required>
+            <input class="form-control" type="text" name="category" id="category" placeholder="Ej. Anillo" required>
         </div>
     </div>
 
@@ -42,7 +51,7 @@
         <label for="price" class="form-label">Precio</label>
         <div class="input-group">
             <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
-            <input class="form-control" type="number" name="price" id="price" placeholder="Ej. 5000" required>
+            <input class="form-control" type="number" name="price" id="price" placeholder="Ej. 4990" required>
         </div>
     </div>
 
@@ -85,9 +94,17 @@
     </div>
 </form>
 
+
+
+
+
+
+
+
 <div class="row mt-4" id="list-products">
 
 </div>
-
+       
+       
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/realtime.js"></script>

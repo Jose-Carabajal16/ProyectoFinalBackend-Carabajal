@@ -1,72 +1,39 @@
-import express from 'express';
-import { __dirname } from "./utils.js";
-import handlebars from "express-handlebars";
-import { Server } from 'socket.io';
-import ProduManager from './dao/controllers/mongo/productManagerMongo.js';
+import express from "express"
+import { __dirname } from "./utils.js"
+import handlebars from "express-handlebars"
+import {Server} from "socket.io"
 
-// Importación de rutas
-import productRoutes from "./routes/productsRoutes.js";
-import viewsRouter from "./routes/viewsRouter.js";
+import productRouter from "./routes/products.router.js";
+import viewRouter from "./routes/views.router.js";
+import socketProducts from "./listeners/socketproducts.js";
 
-// Importación del controlador
-//import ProductManager from './dao/controllers/manager/productsManager.js';
-import { conDB } from './conDB.js';
-
-const app = express();
-const PORT = 3000;
-conDB();
-
-// Instancia de ProductManager
-//const productManager = new ProductManager(__dirname + '/dao/database/products.json'); 
-const productManager = ProduManager
-// Middleware
-app.use(express.static(__dirname + "/public"));
-app.engine("handlebars", handlebars.engine());
-app.set("views", __dirname + "/views");
-app.set("view engine", "handlebars");
-
-// Rutas
-app.use("/api", productRoutes);
-app.use('/', viewsRouter);
-
-// Escuchando el puerto
-const httpServer = app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto: ${PORT}`);
-});
-const io = new Server(httpServer);
-
-// Eventos de WebSocket
-io.on('connection', async (socket) => {
-    console.log("Cliente conectado con ID:", socket.id);
-    
+import connectToDB from "./Dao/config/configServer.js";
+import cartRouter from "./routes/carts.router.js";
+const app = express()
+const PORT=8088
+// Middleware para analizar el cuerpo JSON de la solicitud
+app.use(express.json());
+app.use(express.static(__dirname + "/public"))
+//handlebars
+app.engine("handlebars",handlebars.engine())
+app.set("views", __dirname+"/views")
+app.set("view engine","handlebars")
+//rutas
+app.use("/api", productRouter)
+app.use('/', viewRouter);
+app.use("/api", cartRouter)
+connectToDB()
+const httpServer=app.listen(PORT, () => {
     try {
-        const listaDeProductos = await productManager.getProductsView();
-        console.log("Enviando productos al cliente:", listaDeProductos);
-        socket.emit("enviodeproducts", listaDeProductos);
-    } catch (error) {
-        console.error("Error al obtener productos:", error);
+        console.log(`Listening to the port ${PORT}\nAcceder a:`);
+        console.log(`\t1). http://localhost:${PORT}/api/products`)
+        console.log(`\t2). http://localhost:${PORT}/api/carts`);
     }
-
-    socket.on("addProduct", async (obj) => {
-        console.log("Datos recibidos para agregar producto:", obj);
-        try {
-            await productManager.addProduct(obj);
-            const listaDeProductos = await productManager.getProductsView();
-            console.log("Actualizando productos después de agregar uno:", listaDeProductos);
-            io.emit("enviodeproducts", listaDeProductos);
-        } catch (error) {
-            console.error("Error al agregar producto:", error);
-        }
-    });
-
-    socket.on("deleteProduct", async (id) => {
-        try {
-            await productManager.deleteProduct(id);
-            const listaDeProductos = await productManager.getProductsView();
-            console.log("Actualizando productos después de eliminar uno:", listaDeProductos);
-            io.emit("enviodeproducts", listaDeProductos);
-        } catch (error) {
-            console.error("Error al eliminar producto:", error);
-        }
-    });
+    catch (err) {
+        console.log(err);
+    }
 });
+
+const socketServer = new Server(httpServer)
+
+socketProducts(socketServer)
